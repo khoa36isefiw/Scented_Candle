@@ -1,11 +1,12 @@
-import React from 'react'
+import React from 'react';
+import FreeShip from '../components/FreeShip/FreeShip';
 
 function HomePage() {
-  return (
-    <div>
-      <h1 className="text-[26px]">Hello World</h1>
-    </div>
-  )
+    return (
+        <div>
+            <FreeShip />
+        </div>
+    );
 }
 
-export default HomePage
+export default HomePage;

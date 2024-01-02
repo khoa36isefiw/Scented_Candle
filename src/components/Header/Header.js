@@ -2,16 +2,18 @@ import React, { useState, useEffect, useRef } from 'react';
 import imgLink from '../../assets/images/logo.png';
 import { FaAngleDown, FaAngleUp } from 'react-icons/fa6';
 import { IoSearchSharp, IoPersonOutline, IoCartOutline, IoCloseSharp } from 'react-icons/io5';
-import TextField from '@mui/material/TextField';
+import { TextField, Box } from '@mui/material';
+import DropdownMenu from '../DropdownMenu/DropdownMenu';
 import 'animate.css';
+import './Header.scss';
+import { BsCurrencyDollar } from 'react-icons/bs';
+import { MdLanguage } from 'react-icons/md';
 
 function Header() {
     return (
-        <div className="p-[50px]">
+        <Box>
             <Header1 />
-
-            <div></div>
-        </div>
+        </Box>
     );
 }
 
@@ -23,6 +25,19 @@ function Header1() {
 
     const [selectedCurrency, setSelectedCurrency] = useState('CAD | Canda');
     const [selectedLanguage, setSelectedLanguage] = useState('EN | English');
+    const [isScrolled, setIsScrolled] = useState(false);
+
+    const handleScroll = () => {
+        // Check if the user has scrolled beyond 150 pixels
+        setIsScrolled(window.scrollY > 150);
+    };
+
+    useEffect(() => {
+        document.addEventListener('scroll', handleScroll);
+        return () => {
+            document.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
 
     const currencyDropdownRef = useRef(null);
     const languageDropdownRef = useRef(null);
@@ -68,6 +83,7 @@ function Header1() {
 
     const currencyMenuItems = [
         { label: 'VND | Viet Nam', value: 'VND | Viet Nam' },
+        { label: 'CAD | Canda', value: 'CAD | Canda' },
         { label: 'USD | United States', value: 'USD | United States' },
         // Add more currency menu items as needed
     ];
@@ -120,7 +136,8 @@ function Header1() {
     }, [isSearchModalVisible]);
 
     return (
-        <div className="flex items-center justify-between margin-[auto] my-[16px] mx-[96px]">
+        <div className={`flex items-center justify-between margin-[auto] my-[16px] mx-[96px] `}>
+            {/* <div className="flex items-center justify-between margin-[auto] my-[16px] mx-[96px]"> */}
             <div className="w-[80px] h-[80px] cursor-pointer">
                 <a href="/">
                     <img src={imgLink} alt="Luân Nèk" />
@@ -136,7 +153,8 @@ function Header1() {
                         type="button"
                         onClick={toggleCurrencyDropdown}
                     >
-                        <span className="mr-[4px]">{selectedCurrency}</span>{' '}
+                        <BsCurrencyDollar className="text-[16px]" />
+                        <span className=" ml-[4px] mr-[4px]">{selectedCurrency}</span>{' '}
                         {isCurrencyDropdownVisible ? <FaAngleUp /> : <FaAngleDown />}
                     </div>
                     <DropdownMenu
@@ -144,18 +162,21 @@ function Header1() {
                         isVisible={isCurrencyDropdownVisible}
                         handleMenuClick={handleCurrencyClick}
                         menuItems={currencyMenuItems}
+                        selectedValue={selectedCurrency}
                     />
                 </div>
                 {/* Language Dropdown */}
-                <div className="relative ">
+                {/* <div className="relative ">
                     <div
                         id="languageDropdownDefaultButton"
                         data-dropdown-toggle="dropdown"
-                        className="text-[16px] align-center hover:underline focus:ring-4 focus:outline-none hover:cursor-pointer font-medium rounded-lg text-sm px-9 py-2 text-center inline-flex items-center "
+                        className="text-[16px] align-center hover:underline focus:ring-4 focus:outline-none hover:cursor-pointer font-medium rounded-lg text-sm px-9 py-2 text-center inline-flex items-center 
+                        "
                         type="button"
                         onClick={toggleLanguageDropdown}
                     >
-                        <span className="mr-[4px]">{selectedLanguage}</span>{' '}
+                        <MdLanguage className="text-[16px]" />
+                        <span className=" ml-[4px] mr-[4px]">{selectedLanguage}</span>{' '}
                         {isLanguageDropdownVisible ? <FaAngleUp /> : <FaAngleDown />}
                     </div>
                     <DropdownMenu
@@ -163,15 +184,40 @@ function Header1() {
                         isVisible={isLanguageDropdownVisible}
                         handleMenuClick={handleLanguageClick}
                         menuItems={languageMenuItems}
+                        selectedValue={selectedLanguage}
+                        fullWidth={true}
+                    />
+                </div> */}
+                <div className="relative">
+                    <div
+                        id="languageDropdownDefaultButton"
+                        data-dropdown-toggle="dropdown"
+                        className={`text-[16px] align-center hover:underline focus:ring-4 focus:outline-none hover:cursor-pointer font-medium rounded-lg text-sm px-9 py-2 text-center inline-flex items-center `}
+                        type="button"
+                        onClick={toggleLanguageDropdown}
+                    >
+                        <MdLanguage className="text-[16px]" />
+                        <span className="ml-[4px] mr-[4px]">{selectedLanguage}</span>{' '}
+                        {isLanguageDropdownVisible ? <FaAngleUp /> : <FaAngleDown />}
+                    </div>
+                    <DropdownMenu
+                        dropdownRef={languageDropdownRef}
+                        isVisible={isLanguageDropdownVisible}
+                        handleMenuClick={handleLanguageClick}
+                        menuItems={languageMenuItems}
+                        selectedValue={selectedLanguage}
                     />
                 </div>
-                <div className="px-[16px] hover:cursor-pointer" onClick={toggleSearchModal}>
+                <div
+                    className="px-[16px] hover:cursor-pointer hover:scale-160 hover:text-[30px]"
+                    onClick={toggleSearchModal}
+                >
                     <IoSearchSharp />
                 </div>
-                <div className="px-[16px] hover:cursor-pointer">
+                <div className="px-[16px] hover:custom-scale hover:text-[30px]  hover:cursor-pointer transform transition-transform">
                     <IoPersonOutline />
                 </div>
-                <div className="px-[16px] hover:cursor-pointer">
+                <div className="px-[16px] hover:cursor-pointer hover:text-[30px]">
                     <IoCartOutline />
                 </div>
                 {isSearchModalVisible && (
@@ -246,31 +292,6 @@ function Header1() {
                     </div>
                 )}
             </div>
-        </div>
-    );
-}
-
-function DropdownMenu({ isVisible, handleMenuClick, menuItems, dropdownRef }) {
-    return (
-        <div
-            ref={dropdownRef}
-            className={`z-10 ${
-                isVisible ? 'block' : 'hidden'
-            } bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 absolute top-[100%] mt-[2px]`}
-        >
-            <ul className="py-2 text-sm text-gray-700 dark:text-gray-200">
-                {menuItems.map((menuItem, index) => (
-                    <li key={index}>
-                        <a
-                            href="#"
-                            onClick={() => handleMenuClick(menuItem.value)}
-                            className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                        >
-                            {menuItem.label}
-                        </a>
-                    </li>
-                ))}
-            </ul>
         </div>
     );
 }

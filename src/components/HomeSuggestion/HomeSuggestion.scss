@@ -1,0 +1,17 @@
+.container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.container:hover .icon {
+    width: 30px;
+}
+
+.container .text {
+    margin-right: 8px;
+}
+
+.container .icon {
+    transition: width 0.3s ease;
+}

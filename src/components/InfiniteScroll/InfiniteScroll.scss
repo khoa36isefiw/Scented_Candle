@@ -1,0 +1,36 @@
+.slide {
+    margin-top: 90px;
+    height: 250px;
+    width: 250px;
+    display: flex;
+    overflow-y: scroll;
+    align-items: center;
+}
+
+.slide img {
+    border-radius: 10px;
+    background-color: #d5cdcd;
+    width: 450px;
+    height: 250px;
+    margin: 0 4px;
+    overflow-y: scroll;
+    transition: transform 1s;
+    cursor: pointer;
+}
+
+.overflowX-scroll {
+    overflow-x: scroll;
+}
+
+.slick-slider {
+    overflow-y: hidden !important;
+}
+
+/* Keeps the dots visible */
+.slick-dots {
+    position: static;
+}
+
+.slick-dots li button:before {
+    font-size: 12px;
+}

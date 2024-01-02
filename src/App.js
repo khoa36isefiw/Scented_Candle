@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { privateRoutes, publicRoutes } from './routes/routes';
+import ScrollToTopButton from './components/ScrollToTop/ScrollToTop';
 
 function App() {
     return (
@@ -47,6 +48,7 @@ function App() {
                     })}
                 </Routes>
             </div>
+            <ScrollToTopButton />
         </Router>
     );
 }

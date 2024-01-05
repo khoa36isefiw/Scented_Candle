@@ -8,6 +8,7 @@ import 'animate.css';
 import './Header.scss';
 import { BsCurrencyDollar } from 'react-icons/bs';
 import { MdLanguage } from 'react-icons/md';
+import { useNavigate } from 'react-router-dom';
 
 function Header() {
     return (
@@ -20,6 +21,7 @@ function Header() {
 export default Header;
 
 function Header1() {
+    const navigate = useNavigate();
     const [isCurrencyDropdownVisible, setIsCurrencyDropdownVisible] = useState(false);
     const [isLanguageDropdownVisible, setIsLanguageDropdownVisible] = useState(false);
 
@@ -212,13 +214,21 @@ function Header1() {
                     className="px-[16px] hover:cursor-pointer hover:scale-160 hover:text-[30px]"
                     onClick={toggleSearchModal}
                 >
-                    <IoSearchSharp />
+                    <IoSearchSharp className="hover:custom-scale hover:text-[25px] text-[20px]  hover:cursor-pointer transform transition-transform" />
                 </div>
-                <div className="px-[16px] hover:custom-scale hover:text-[30px]  hover:cursor-pointer transform transition-transform">
-                    <IoPersonOutline />
+
+                <div className="px-[16px] ">
+                    <IoPersonOutline
+                        onClick={() => navigate('/account/login')}
+                        className="hover:custom-scale hover:text-[25px] text-[20px]  hover:cursor-pointer transform transition-transform"
+                    />
                 </div>
+
                 <div className="px-[16px] hover:cursor-pointer hover:text-[30px]">
-                    <IoCartOutline />
+                    <IoCartOutline
+                        className="hover:custom-scale hover:text-[25px] text-[20px]  hover:cursor-pointer transform transition-transform"
+                        onClick={() => navigate('/cart')}
+                    />
                 </div>
                 {isSearchModalVisible && (
                     <div>
@@ -271,7 +281,6 @@ function Header1() {
                                     zIndex: 10001,
                                 }}
                             >
-                                {/* Your search modal content goes here */}
                                 <TextField
                                     id="outlined-basic"
                                     sx={{ width: '600px' }}

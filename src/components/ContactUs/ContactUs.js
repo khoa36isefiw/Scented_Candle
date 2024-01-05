@@ -24,7 +24,7 @@ function ContactUs() {
     const chunkedContacts = chunkArray(contacts, 5);
 
     return (
-        <div className="mt-16">
+        <div className="mt-16 ">
             {/* {chunkedContacts.map((chunk, rowIndex) => (
                 <div key={rowIndex} className="flex  justify-center mb-4">
                     {chunk.map((contact, index) => (
@@ -37,7 +37,8 @@ function ContactUs() {
                     ))}
                 </div>
             ))} */}
-            <div className="flex  flex-wrap justify-center mb-4 w-[800px] ml-[300px]">
+            <Divider />
+            <div className="flex  flex-wrap justify-center mb-4 w-[800px] ml-[300px] mt-16">
                 {contacts.map((contact, index) => (
                     <p
                         key={index}

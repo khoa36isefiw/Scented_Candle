@@ -11,7 +11,7 @@ const Footer = () => {
     const contacts = ['Privacy Policy', 'Return Policy', 'Shipping Policy', 'Terms Of Service'];
 
     return (
-        <footer className="text-white bg-gray py-4 absolute left-0 right-0 bottom-0">
+        <footer className="text-white bg-gray py-4  left-0 right-0 bottom-0">
             <div className="container mx-auto flex flex-col items-center justify-between h-full text-[#11151CBF]">
                 <div className="flex flex-wrap justify-center mb-6">
                     {contacts.map((contact, index) => (

@@ -14,43 +14,19 @@ import HomeMarketBlog from '../components/HomeMarketBlog/HomeMarketBlog';
 import HomeFollow from '../components/HomeFollow/HomeFollow';
 import ContactUs from '../components/ContactUs/ContactUs';
 import Footer from '../components/Footer/Footer';
+import Navbar from '../components/Header/Header2';
 function HomePage() {
-    const [isHeaderVisible, setIsHeaderVisible] = useState(true);
-
-    const handleScroll = () => {
-        // Adjust the scroll position threshold as needed
-        const scrollThreshold = 100;
-        const currentScrollY = window.scrollY;
-
-        setIsHeaderVisible(currentScrollY < scrollThreshold);
-    };
-
-    useEffect(() => {
-        window.addEventListener('scroll', handleScroll);
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
-
     return (
-        <Box sx={{ minHeight: '750vh', position: 'relative' }}>
-            <FreeShip />
-            <div>
-                <Header />
-                <MenuItem />
-            </div>
+        <Box sx={{ minHeight: '750vh' }}>
             <BackgroundHomePage />
             <HomeProducts />
             <HomeProductsQuantity />
-
             <InfiniteScroll />
             <HomeSuggestion />
             <OurStory />
             <CustomerLove />
             <HomeMarketBlog />
             <HomeFollow />
-            <ContactUs />
-            <Footer />
         </Box>
     );
 }

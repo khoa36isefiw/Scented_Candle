@@ -11,10 +11,10 @@ function OurStory() {
                 <img
                     src={imgOurStory}
                     alt="Introduce Product"
-                    className="h-[550px] w-[450px] rounded-[8px] shadow-lg shadow-[#212221]"
+                    className="h-[650px] w-[450px] rounded-[8px] shadow-lg shadow-[#212221]"
                 />
             </div>
-            <div className="text-[36px] mt-4 -ml-[60px] h-[520px] w-[500px] text-[#383d47bf] bg-white p-4 relative z-10 rounded-[4px]">
+            <div className="text-[36px] mt-4 -ml-[60px] h-[620px] w-[500px] text-[#383d47bf] bg-white p-4 relative z-10 rounded-[4px]">
                 <h3 className="text-[30px] mb-[24px]">Our Story</h3>
                 <p className="mb-[24px] align text-justify text-[18px]">
                     The Scented Market recognized a need for more at home self-care by creating and

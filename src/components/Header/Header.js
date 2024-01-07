@@ -117,18 +117,6 @@ function Header1() {
             console.log('chạy è22');
         }
     };
-    // close overplay
-    const handleOverlayClick = (event) => {
-        if (
-            event.target &&
-            event.target.classList.contains('overlay') &&
-            event.target &&
-            event.target.classList.contains('close-icon')
-        ) {
-            setIsSearchModalVisible(false);
-            console.log('chạy è');
-        }
-    };
 
     useEffect(() => {
         document.addEventListener('mousedown', handleClickOutsideSearchModal);

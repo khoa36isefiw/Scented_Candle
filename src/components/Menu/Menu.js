@@ -27,8 +27,17 @@ const MenuItem = () => {
     }, []);
 
     const handleButtonClick = (menuItem) => {
-        setShowItems(!showItems);
-        setSelectedMenuItem(menuItem);
+        if (selectedMenuItem === menuItem) {
+            setShowItems(false);
+            setSelectedMenuItem(null);
+        } else {
+            setShowItems(true);
+            setSelectedMenuItem(menuItem);
+        }
+    };
+
+    const handleButtonClick2 = () => {
+        setShowItems(false);
     };
 
     const handleListItemClick = (item) => {
@@ -111,13 +120,11 @@ const MenuItem = () => {
                 {menuItems.map((menuItem, index) => (
                     <span
                         key={index}
-                        className={`flex items-center text-center ${
-                            showItems ? 'animate__fadeIn' : 'animate__fadeOut'
-                        } ml-[12px] mr-[12px]`}
+                        className={`flex items-center text-center ml-[12px] mr-[12px]`}
                         onClick={() => handleButtonClick(menuItem.label)}
                     >
                         {menuItem.label}
-                        <div className="ml-[4px]">
+                        <div className="ml-[4px] ">
                             {menuItem.items &&
                                 menuItem.items.length > 0 &&
                                 (selectedMenuItem === menuItem.label ? (
@@ -137,7 +144,7 @@ const MenuItem = () => {
                     ref={listRef}
                     className={`
                          'bg-white'
-                     cursor-pointer `}
+                     cursor-pointer animate__animated animate__pulse`}
                 >
                     <List>
                         <Box className="grid grid-cols-4 gap-4">
@@ -147,7 +154,7 @@ const MenuItem = () => {
                                     <ListItem
                                         key={item}
                                         onClick={() => handleListItemClick(item)}
-                                        className="hover:underline text-[14px]"
+                                        className="hover:underline text-[14px] animate__animated animate__fadeIn"
                                     >
                                         {item}
                                     </ListItem>

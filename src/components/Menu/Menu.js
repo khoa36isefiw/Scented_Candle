@@ -4,7 +4,7 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import { FaAngleDown, FaAngleUp } from 'react-icons/fa6';
 import 'animate.css/animate.css';
-import './Menu.scss';
+import './Menu.module.scss';
 
 const MenuItem = () => {
     const [showItems, setShowItems] = useState(false);

@@ -3,6 +3,38 @@ import { Box, Typography, Divider, IconButton, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import products from './data'; // Import the product data
+import 'animate.css';
+
+const featuredCollections = [
+    {
+        imageUrl: 'https://ebacsi.vn/wp-content/uploads/2023/10/nen-thom-1-14.jpg',
+        hoverImageUrl:
+            'https://chus.vn/images/detailed/219/a04395bb03d6a2573eb979616237a67b_w767_h1105.jpg',
+        name: 'Shower Gel - Cashmere',
+        price: '$69.69 USD',
+    },
+    {
+        imageUrl: 'https://img.fruugo.com/product/7/93/877286937_max.jpg',
+        hoverImageUrl:
+            'https://ae01.alicdn.com/kf/Sb0c3fb56700f43759c48ddb9d2f8e064y/Kitten-Paw-Scented-Candle-Room-Decor-Relieve-Fatigue-Morandi-Colors-Candles-Aromatherapy-Festive-Wedding-Birthday.jpg',
+        name: 'Another Collection',
+        price: '$99.99 USD',
+    },
+    {
+        imageUrl: 'https://ebacsi.vn/wp-content/uploads/2023/10/nen-thom-1-14.jpg',
+        hoverImageUrl:
+            'https://chus.vn/images/detailed/219/a04395bb03d6a2573eb979616237a67b_w767_h1105.jpg',
+        name: 'Shower Gel - Cashmere',
+        price: '$69.69 USD',
+    },
+    {
+        imageUrl: 'https://img.fruugo.com/product/7/93/877286937_max.jpg',
+        hoverImageUrl:
+            'https://ae01.alicdn.com/kf/Sb0c3fb56700f43759c48ddb9d2f8e064y/Kitten-Paw-Scented-Candle-Room-Decor-Relieve-Fatigue-Morandi-Colors-Candles-Aromatherapy-Festive-Wedding-Birthday.jpg',
+        name: 'Another Collection',
+        price: '$99.99 USD',
+    },
+];
 
 function Cart() {
     const [productQuantities, setProductQuantities] = useState(
@@ -30,7 +62,7 @@ function Cart() {
     const navigate = useNavigate();
 
     return (
-        <div className="mt-16 ml-[280px] mr-[280px]">
+        <div className="mt-16 ml-[120px] mr-[120px]">
             <div className="flex justify-between items-center">
                 <Typography sx={{ fontSize: '24px', fontWeight: 'bold' }}>Your Cart</Typography>
                 <Typography
@@ -148,6 +180,124 @@ function Cart() {
                 })}
             </div>
             <Divider />
+            <div className="flex items-start justify-between">
+                <div>
+                    <Typography sx={{ mt: 2, mb: 2 }}>Write your post:</Typography>
+                    <textarea
+                        name="postContent"
+                        rows={4}
+                        cols={40}
+                        placeholder="Write your post:"
+                        style={{ border: '1px solid #ccc', padding: '8px', fontSize: '16px' }}
+                    />
+                </div>
+                <div>
+                    <Typography sx={{ mt: 2, mb: 2, textAlign: 'end' }}>Subtotal $69,69</Typography>
+                    <Typography sx={{ mt: 2, mb: 2 }}>
+                        Taxes and{' '}
+                        <span className="text-[#a7bda0] hover:text-[#5b7b5e] hover:underline hover:cursor-pointer">
+                            shipping
+                        </span>{' '}
+                        calculated at checkout
+                    </Typography>{' '}
+                    <div className="mt-[24px] text-center">
+                        <Button
+                            variant="contained"
+                            fullWidth
+                            sx={{
+                                borderRadius: '16px',
+                                // define animation
+                                '@keyframes width-increase': {
+                                    '0%': {
+                                        transform: 'scaleY(1)',
+                                    },
+                                    '100%': {
+                                        transform: 'scaleY(1.05)',
+                                    },
+                                },
+                                mt: 2,
+                                borderRadis: '16px',
+                                p: '12px 36px',
+
+                                backgroundColor: '#5c7b5e',
+                                '&:hover': {
+                                    backgroundColor: '#5c7b5e',
+                                    // use animation
+                                    animation: 'width-increase 1s ease infinite',
+                                },
+                            }}
+                        >
+                            checkout
+                        </Button>
+                    </div>
+                </div>
+            </div>
+            {/* Featured Collection */}
+            <div>
+                <Typography fontWeight={'bold'}>Featured Collection</Typography>
+                <div>
+                    <div className="grid grid-cols-4 mt-4 ">
+                        {featuredCollections.map((collection, index) => (
+                            <div key={index} className="cursor-pointer w-[250px]">
+                                <img
+                                    src={collection.imageUrl}
+                                    alt="Collection Image"
+                                    style={{
+                                        width: '250px',
+                                        height: '300px',
+                                        transition: '0.5s',
+                                        objectFit: 'cover',
+                                        marginBottom: '8px',
+                                    }}
+                                    onMouseEnter={(e) => {
+                                        e.currentTarget.classList.add(
+                                            'animate__animated',
+                                            'animate__pulse',
+                                        );
+                                        e.currentTarget.src = collection.hoverImageUrl;
+                                    }}
+                                    onMouseLeave={(e) => {
+                                        e.currentTarget.classList.remove('animate__pulse');
+                                        e.currentTarget.src = collection.imageUrl;
+                                    }}
+                                />
+                                <p className="text-[14px] hover:underline mb-1 mt-4">
+                                    {collection.name}
+                                </p>
+                                <p className="text-[14px] no-underline">{collection.price}</p>
+                                <div className="mt-2">
+                                    <Button
+                                        variant="contained"
+                                        fullWidth
+                                        sx={{
+                                            borderRadius: '16px',
+                                            // define animation
+                                            '@keyframes width-increase': {
+                                                '0%': {
+                                                    transform: 'scaleY(1)',
+                                                },
+                                                '100%': {
+                                                    transform: 'scaleY(1.05)',
+                                                },
+                                            },
+                                            borderRadis: '16px',
+                                            p: '12px 36px',
+                                            backgroundColor: '#5c7b5e',
+                                            '&:hover': {
+                                                backgroundColor: '#5c7b5e',
+                                                // use animation
+                                                animation: 'width-increase 1s ease infinite',
+                                            },
+                                        }}
+                                    >
+                                        Checkout
+                                    </Button>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }

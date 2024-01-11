@@ -3,8 +3,8 @@ import { FaGooglePay, FaApplePay, FaPaypal, FaMoneyBill } from 'react-icons/fa';
 
 const Footer = () => {
     const paymentMethods = [
-        { name: 'Google Pay', icon: <FaGooglePay size={32} color="#4285F4" /> },
-        { name: 'Apple Pay', icon: <FaApplePay size={32} color="#000000" /> },
+        { name: 'Google Pay', icon: <FaGooglePay size={48} color="#4285F4" /> },
+        { name: 'Apple Pay', icon: <FaApplePay size={48} color="#000000" /> },
         { name: 'PayPal', icon: <FaPaypal size={32} color="#003087" /> },
         { name: 'Momo', icon: <FaMoneyBill size={32} color="#00A9E0" /> },
     ];
@@ -30,7 +30,7 @@ const Footer = () => {
                         </div>
                     ))}
                 </div>
-                <p className="mt-auto">&copy; 2023 Senko Mahiru</p>
+                <p className="mt-6 text-[18px]">&copy; 2023 Senko Mahiru</p>
             </div>
         </footer>
     );

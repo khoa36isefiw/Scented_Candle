@@ -17,7 +17,7 @@ import Footer from '../components/Footer/Footer';
 import Navbar from '../components/Header/Header2';
 function HomePage() {
     return (
-        <Box sx={{ minHeight: '750vh' }}>
+        <Box sx={{ minHeight: '600vh' }}>
             <BackgroundHomePage />
             <HomeProducts />
             <HomeProductsQuantity />

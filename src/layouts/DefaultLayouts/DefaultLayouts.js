@@ -4,7 +4,7 @@ import Header from '../../components/Header/Header';
 import MenuItem from '../../components/Menu/Menu';
 import ContactUs from '../../components/ContactUs/ContactUs';
 import Footer from '../../components/Footer/Footer';
-import ScrollToTopButton from '../../components/ScrollToTop/ScrollToTop';
+import ScrollToTop from '../../components/ScrollToTop/ScrollToTop';
 import { Box } from '@mui/material';
 import FreeShip from '../../components/FreeShip/FreeShip';
 
@@ -21,15 +21,12 @@ function DefaultLayout({ children }) {
             ) : ( */}
 
             <Box>
-                <div>
-                    <FreeShip />
-                    <Header />
-                    <MenuItem />
-                    {children}
-                    <ContactUs />
-                    <Footer />
-                    <ScrollToTopButton />
-                </div>
+                <FreeShip />
+                <Header />
+                <MenuItem />
+                <Box>{children}</Box>
+                <ContactUs />
+                <Footer />
             </Box>
         </Box>
     );

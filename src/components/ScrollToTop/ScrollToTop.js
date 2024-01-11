@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import styles from './ScrollToTop.scss';
+import styles from './ScrollToTop.module.scss';
 import { Box } from '@mui/material';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 

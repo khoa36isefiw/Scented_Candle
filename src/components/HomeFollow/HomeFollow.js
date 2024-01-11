@@ -72,7 +72,6 @@ function HomeFollow() {
                     ))}
                 </div>
             </div>
-            <Divider />
         </div>
     );
 }

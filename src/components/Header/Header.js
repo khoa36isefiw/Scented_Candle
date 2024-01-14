@@ -5,7 +5,7 @@ import { IoSearchSharp, IoPersonOutline, IoCartOutline, IoCloseSharp } from 'rea
 import { TextField, Box } from '@mui/material';
 import DropdownMenu from '../DropdownMenu/DropdownMenu';
 import 'animate.css';
-import './Header.scss';
+import './Header.module.scss';
 import { BsCurrencyDollar } from 'react-icons/bs';
 import { MdLanguage } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';

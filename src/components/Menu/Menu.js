@@ -51,6 +51,16 @@ const MenuItem = () => {
         }
     };
 
+    const handleMouseEnter = (menuItem) => {
+        setShowItems(true);
+        setSelectedMenuItem(menuItem.label);
+    };
+
+    const handleMouseLeave = () => {
+        setShowItems(false);
+        setSelectedMenuItem(null);
+    };
+
     useEffect(() => {
         document.addEventListener('mousedown', handleClickOutsideList);
         return () => {
@@ -59,7 +69,7 @@ const MenuItem = () => {
     }, []);
 
     const menuItems = [
-        { label: 'New Arrivals', items: [] },
+        { label: 'New Arrivals', items: [], href: 'collection/new-arrivals' },
         {
             label: 'Shop',
             items: [
@@ -118,22 +128,26 @@ const MenuItem = () => {
                 className={`grid grid-cols-5 gap-4 items-center`}
             >
                 {menuItems.map((menuItem, index) => (
-                    <span
-                        key={index}
-                        className={`flex items-center text-center ml-[12px] mr-[12px]`}
-                        onClick={() => handleButtonClick(menuItem.label)}
-                    >
-                        {menuItem.label}
-                        <div className="ml-[4px] ">
-                            {menuItem.items &&
-                                menuItem.items.length > 0 &&
-                                (selectedMenuItem === menuItem.label ? (
-                                    <FaAngleDown />
-                                ) : (
-                                    <FaAngleUp />
-                                ))}
-                        </div>
-                    </span>
+                    <a href={menuItem.href}>
+                        <span
+                            key={index}
+                            className={`flex items-center text-center ml-[12px] mr-[12px]`}
+                            // onClick={() => handleButtonClick(menuItem.label)}
+                            onMouseEnter={() => handleMouseEnter(menuItem)}
+                            onMouseLeave={handleMouseLeave}
+                        >
+                            {menuItem.label}
+                            <div className="ml-[4px] ">
+                                {menuItem.items &&
+                                    menuItem.items.length > 0 &&
+                                    (selectedMenuItem === menuItem.label ? (
+                                        <FaAngleDown />
+                                    ) : (
+                                        <FaAngleUp />
+                                    ))}
+                            </div>
+                        </span>
+                    </a>
                 ))}{' '}
                 <div className="menu-item-overlay"></div>
             </Box>
